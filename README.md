@@ -1,111 +1,112 @@
-# 🧠 Agente de Estudos
 
-Um agente inteligente para análise, explicação, geração de questões e avaliação de respostas sobre conteúdos de arquivos PDF, utilizando IA, LangChain, LangGraph, HuggingFace e Mem0.
+# 🧠 Study Agent
 
----
-
-## 🎯 Objetivo
-
-O **Agente de Estudos** foi criado para:
-- Ajudar estudantes a entender conteúdos acadêmicos de PDFs com explicações claras e didáticas.
-- Gerar questões de múltipla escolha baseadas no conteúdo do material.
-- Avaliar respostas fornecidas pelo usuário, com feedback construtivo.
-- Manter um histórico de interações e respostas em memória persistente.
+An intelligent agent for analyzing, explaining, generating questions, and evaluating answers from PDF file content using AI, LangChain, LangGraph, HuggingFace, and Mem0.
 
 ---
 
-## 🚀 Funcionalidades
+## 🎯 Purpose
 
-- **Upload de PDF:** Carregue qualquer arquivo PDF para análise.
-- **Chunking e Indexação:** O conteúdo é dividido em partes semânticas e indexado para busca eficiente.
-- **Perguntas e Respostas:** Faça perguntas sobre o conteúdo e receba explicações detalhadas.
-- **Geração de Questões:** Gere automaticamente questões de múltipla escolha sobre o material.
-- **Avaliação de Respostas:** Receba avaliação e feedback sobre respostas fornecidas.
-- **Memória Persistente:** Todo o histórico de interações é salvo e pode ser consultado.
-- **Interface Web:** Interface amigável via Streamlit.
+The **Study Agent** was built to:
+- Help students understand academic PDF content with clear, didactic explanations.
+- Generate multiple-choice questions based on study material.
+- Evaluate user-provided answers with constructive feedback.
+- Maintain a persistent memory of interactions and responses.
 
 ---
 
-## ⚙️ Como Usar
+## 🚀 Features
 
-1. **Instale as dependências:**
+- **PDF Upload:** Upload any PDF file for analysis.
+- **Chunking & Indexing:** Content is semantically split and indexed for efficient retrieval.
+- **Q&A:** Ask questions about the content and get detailed explanations.
+- **Question Generation:** Automatically generate multiple-choice questions based on the material.
+- **Answer Evaluation:** Receive feedback and assessment on your answers.
+- **Persistent Memory:** All interactions are saved and can be reviewed.
+- **Web Interface:** Friendly UI via Streamlit.
+
+---
+
+## ⚙️ How to Use
+
+1. **Install dependencies:**
    ```bash
    pip install streamlit langchain langchain-community langchain-huggingface langgraph mem0 python-dotenv
    ```
 
-2. **Configure as variáveis de ambiente:**
-   - Crie um arquivo `.env` (opcional) ou edite no início do `main.py`:
+2. **Set environment variables:**
+   - Create a `.env` file (optional) or edit at the top of `main.py`:
      ```
-     HF_TOKEN=seu_token_huggingface
-     MEM0_API_KEY=sua_chave_mem0
+     HF_TOKEN=your_huggingface_token
+     MEM0_API_KEY=your_mem0_key
      ```
-   - Ou edite diretamente no código as linhas:
+   - Or directly edit in the code:
      ```python
-     os.environ['MEM0_API_KEY'] = "SUA_CHAVE"
-     os.environ['HF_TOKEN'] = "SEU_TOKEN"
+     os.environ['MEM0_API_KEY'] = "YOUR_KEY"
+     os.environ['HF_TOKEN'] = "YOUR_TOKEN"
      ```
 
-3. **Execute a aplicação:**
+3. **Run the app:**
    ```bash
    streamlit run main.py
    ```
 
-4. **No navegador:**
-   - Faça upload de um PDF.
-   - Digite sua pergunta ou solicite uma questão.
-   - (Opcional) Escreva uma resposta para ser avaliada.
-   - Clique em **Executar**.
-   - Veja a resposta, avaliação e consulte a memória das interações.
+4. **In the browser:**
+   - Upload a PDF.
+   - Type a question or request a generated one.
+   - (Optional) Provide an answer for evaluation.
+   - Click **Run**.
+   - View the explanation, evaluation, and memory log.
 
 ---
 
-## 🧩 Principais Dependências
+## 🧩 Main Dependencies
 
-- **[Streamlit](https://streamlit.io/):** Interface web.
-- **[LangChain](https://python.langchain.com/):** Orquestração de LLMs e retrievers.
-- **[LangGraph](https://github.com/langchain-ai/langgraph):** Workflow dinâmico com grafos de estados.
-- **[HuggingFace Hub](https://huggingface.co/):** Modelos de linguagem (ex: `google/gemma-3-12b-it`).
-- **[Mem0](https://mem0.ai/):** Memória persistente de interações.
-- **[python-dotenv](https://pypi.org/project/python-dotenv/):** Gerenciamento de variáveis de ambiente.
-
----
-
-## 📚 Estrutura do Código
-
-- **main.py** — Toda a lógica do agente, interface, workflow, memória e integração com LLM.
-- **Dependências** — Instaladas via pip (veja acima).
+- **[Streamlit](https://streamlit.io/):** Web interface.
+- **[LangChain](https://python.langchain.com/):** LLM and retriever orchestration.
+- **[LangGraph](https://github.com/langchain-ai/langgraph):** Dynamic state graph workflow.
+- **[HuggingFace Hub](https://huggingface.co/):** LLMs (e.g., `google/gemma-3-12b-it`).
+- **[Mem0](https://mem0.ai/):** Persistent memory storage.
+- **[python-dotenv](https://pypi.org/project/python-dotenv/):** Environment variable management.
 
 ---
 
-## 📝 Observações e Pré-requisitos
+## 📚 Code Structure
 
-- **Token HuggingFace:** Necessário para acessar modelos LLM via API. Recomenda-se um token PRO para modelos grandes.
-- **Chave Mem0:** Necessária para salvar e buscar memórias.
-- **Modelos:** O código usa por padrão o modelo `google/gemma-3-12b-it`. Se não tiver acesso, troque por um modelo público (ex: `HuggingFaceH4/zephyr-7b-beta`).
-- **Python 3.8+** recomendado.
-- **Ambiente virtual** recomendado para evitar conflitos de dependências.
+- **main.py** — Core logic for the agent, UI, workflow, memory, and LLM integration.
+- **Dependencies** — Installed via pip (see above).
 
 ---
 
-## 🏗️ Extensões Possíveis
+## 📝 Notes & Requirements
 
-- Suporte a outros tipos de arquivos (docx, txt, etc).
-- Integração com outros LLMs (OpenAI, Cohere, etc).
-- Interface multiusuário.
-- Exportação de histórico/memória.
-
----
-
-## 💡 Exemplo de Uso
-
-1. Faça upload de um PDF acadêmico.
-2. Pergunte: “Qual o tema principal do PDF?”
-3. Peça: “Gere uma questão de múltipla escolha sobre o conteúdo.”
-4. Escreva uma resposta e peça avaliação.
-5. Consulte o histórico de interações.
+- **HuggingFace Token:** Required to access LLMs via API. A PRO token is recommended for large models.
+- **Mem0 Key:** Required for storing and retrieving memory.
+- **Models:** Defaults to `google/gemma-3-12b-it`. If unavailable, try a public model like `HuggingFaceH4/zephyr-7b-beta`.
+- **Python 3.8+** recommended.
+- **Virtual environment** is recommended to avoid dependency conflicts.
 
 ---
 
-## 🛡️ Licença
+## 🏗️ Possible Extensions
 
-Uso educacional e experimental. Para uso comercial, consulte as licenças dos modelos e APIs utilizadas. 
+- Support for other file types (docx, txt, etc.).
+- Integration with other LLMs (OpenAI, Cohere, etc.).
+- Multi-user interface.
+- Export of memory/history.
+
+---
+
+## 💡 Example Usage
+
+1. Upload an academic PDF.
+2. Ask: “What’s the main topic of this PDF?”
+3. Request: “Generate a multiple-choice question based on the content.”
+4. Write an answer and request evaluation.
+5. Check interaction history.
+
+---
+
+## 🛡️ License
+
+Educational and experimental use. For commercial use, consult the licenses of the models and APIs used.
