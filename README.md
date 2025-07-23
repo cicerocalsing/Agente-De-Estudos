@@ -1,111 +1,66 @@
 # 🧠 Agente de Estudos
 
-Um agente inteligente para análise, explicação, geração de questões e avaliação de respostas sobre conteúdos de arquivos PDF, utilizando IA, LangChain, LangGraph, HuggingFace e Mem0.
-
----
-
-## 🎯 Objetivo
-
-O **Agente de Estudos** foi criado para:
-- Ajudar estudantes a entender conteúdos acadêmicos de PDFs com explicações claras e didáticas.
-- Gerar questões de múltipla escolha baseadas no conteúdo do material.
-- Avaliar respostas fornecidas pelo usuário, com feedback construtivo.
-- Manter um histórico de interações e respostas em memória persistente.
-
----
+Um agente inteligente para análise e estudo de documentos PDF usando IA.
 
 ## 🚀 Funcionalidades
 
-- **Upload de PDF:** Carregue qualquer arquivo PDF para análise.
-- **Chunking e Indexação:** O conteúdo é dividido em partes semânticas e indexado para busca eficiente.
-- **Perguntas e Respostas:** Faça perguntas sobre o conteúdo e receba explicações detalhadas.
-- **Geração de Questões:** Gere automaticamente questões de múltipla escolha sobre o material.
-- **Avaliação de Respostas:** Receba avaliação e feedback sobre respostas fornecidas.
-- **Memória Persistente:** Todo o histórico de interações é salvo e pode ser consultado.
-- **Interface Web:** Interface amigável via Streamlit.
+- **Upload de PDFs** - Carrega e processa documentos
+- **Análise inteligente** - Responde perguntas sobre o conteúdo
+- **Classificação automática** - Detecta o tipo de pergunta
+- **Memória persistente** - Salva conversas para referência futura
+- **Interface web** - Interface amigável com Streamlit
 
----
+## 📁 Estrutura do Projeto
 
-## ⚙️ Como Usar
+```
+Agente-De-Estudos/
+├── main_simple.py              # Aplicação principal
+├── config.py                   # Configurações
+├── memory_manager.py           # Gerenciamento de memória
+├── document_processor_simple.py # Processamento de PDFs
+├── llm_service_simple.py       # Serviço de IA
+├── esqueleto_do_projeto.txt    # Documentação do projeto
+├── proximos_passos.txt         # Próximos passos
+└── temp_pdf/                   # PDFs temporários
+```
 
-1. **Instale as dependências:**
+## 🛠️ Instalação
+
+1. **Instale as dependências principais:**
    ```bash
-   pip install streamlit langchain langchain-community langchain-huggingface langgraph mem0 python-dotenv
+   pip install -r requirements.txt
    ```
 
-2. **Configure as variáveis de ambiente:**
-   - Crie um arquivo `.env` (opcional) ou edite no início do `main.py`:
-     ```
-     HF_TOKEN=seu_token_huggingface
-     MEM0_API_KEY=sua_chave_mem0
-     ```
-   - Ou edite diretamente no código as linhas:
-     ```python
-     os.environ['MEM0_API_KEY'] = "SUA_CHAVE"
-     os.environ['HF_TOKEN'] = "SEU_TOKEN"
-     ```
+2. **Configurar variáveis de ambiente:**
+   - `HF_TOKEN`: Token do HuggingFace
+   - `MEM0_API_KEY`: Chave da API Mem0
 
-3. **Execute a aplicação:**
-   ```bash
-   streamlit run main.py
-   ```
+3. **Executar a aplicação:**
+```bash
+streamlit run main_simple.py
+```
 
-4. **No navegador:**
-   - Faça upload de um PDF.
-   - Digite sua pergunta ou solicite uma questão.
-   - (Opcional) Escreva uma resposta para ser avaliada.
-   - Clique em **Executar**.
-   - Veja a resposta, avaliação e consulte a memória das interações.
+## 🎯 Como Usar
 
----
+1. **Carregue um PDF** na interface
+2. **Digite sua pergunta** sobre o documento
+3. **Clique em "Executar"** para obter a resposta
+4. **Visualize a memória** para ver conversas anteriores
 
-## 🧩 Principais Dependências
+## 🔧 Tecnologias
 
-- **[Streamlit](https://streamlit.io/):** Interface web.
-- **[LangChain](https://python.langchain.com/):** Orquestração de LLMs e retrievers.
-- **[LangGraph](https://github.com/langchain-ai/langgraph):** Workflow dinâmico com grafos de estados.
-- **[HuggingFace Hub](https://huggingface.co/):** Modelos de linguagem (ex: `google/gemma-3-12b-it`).
-- **[Mem0](https://mem0.ai/):** Memória persistente de interações.
-- **[python-dotenv](https://pypi.org/project/python-dotenv/):** Gerenciamento de variáveis de ambiente.
+- **Streamlit** - Interface web
+- **PyPDF2** - Processamento de PDFs
+- **Mem0** - Sistema de memória
+- **HuggingFace** - Modelos de IA (com fallback)
 
----
+## 📝 Arquivos de Documentação
 
-## 📚 Estrutura do Código
+- `esqueleto_do_projeto.txt` - Estrutura inicial do projeto
+- `proximos_passos.txt` - Sugestões para melhorias futuras
 
-- **main.py** — Toda a lógica do agente, interface, workflow, memória e integração com LLM.
-- **Dependências** — Instaladas via pip (veja acima).
+## 🎉 Status
 
----
-
-## 📝 Observações e Pré-requisitos
-
-- **Token HuggingFace:** Necessário para acessar modelos LLM via API. Recomenda-se um token PRO para modelos grandes.
-- **Chave Mem0:** Necessária para salvar e buscar memórias.
-- **Modelos:** O código usa por padrão o modelo `google/gemma-3-12b-it`. Se não tiver acesso, troque por um modelo público (ex: `HuggingFaceH4/zephyr-7b-beta`).
-- **Python 3.8+** recomendado.
-- **Ambiente virtual** recomendado para evitar conflitos de dependências.
-
----
-
-## 🏗️ Extensões Possíveis
-
-- Suporte a outros tipos de arquivos (docx, txt, etc).
-- Integração com outros LLMs (OpenAI, Cohere, etc).
-- Interface multiusuário.
-- Exportação de histórico/memória.
-
----
-
-## 💡 Exemplo de Uso
-
-1. Faça upload de um PDF acadêmico.
-2. Pergunte: “Qual o tema principal do PDF?”
-3. Peça: “Gere uma questão de múltipla escolha sobre o conteúdo.”
-4. Escreva uma resposta e peça avaliação.
-5. Consulte o histórico de interações.
-
----
-
-## 🛡️ Licença
-
-Uso educacional e experimental. Para uso comercial, consulte as licenças dos modelos e APIs utilizadas. 
+✅ **Funcional** - Sistema completo e operacional
+✅ **Robusto** - Fallbacks para garantir funcionamento
+✅ **Limpo** - Código organizado e documentado 

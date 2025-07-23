@@ -1,0 +1,10 @@
+streamlit
+langchain
+langchain-community
+langchain-huggingface
+huggingface_hub
+sentence-transformers
+mem0
+PyPDF2
+langdetect
+dotenv 
