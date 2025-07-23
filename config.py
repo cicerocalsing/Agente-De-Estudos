@@ -36,8 +36,8 @@ class Config:
     """Classe de configuração centralizada"""
     
     # API Keys
-    MEM0_API_KEY = "m0-bFj5UTXVlpNpSnlaDOfyrfTdYiAWQxcYiQbOHqxk"
-    HF_TOKEN = os.getenv("HF_TOKEN") or "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"
+    MEM0_API_KEY = ""
+    HF_TOKEN = os.getenv("HF_TOKEN") 
     
     # Configurações do modelo de linguagem
     # Usar API mais simples e confiável
